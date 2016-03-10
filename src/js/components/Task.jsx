@@ -15,7 +15,6 @@ export default React.createClass({
   },
 
   handleToggle(task) {
-    console.log(task)
     if (!task.completed) {
       ActionCreator.completeTask(task);
     } else {

@@ -21,7 +21,6 @@ function removeAlldata() {
 function completeTask(task) {
   _data.forEach((item) => {
     if (task.id === item.id) {
-      console.log('task completed')
       item.completed = true;
     }
   })
