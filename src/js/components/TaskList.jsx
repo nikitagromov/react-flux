@@ -3,7 +3,7 @@ import Task from './Task.jsx';
 import TodoStore from './../stores/TodoStore';
 import ListGroup from 'react-bootstrap/lib/ListGroup';
 import Alert from 'react-bootstrap/lib/Alert';
-
+console.log('loaded')
 export default React.createClass({
   getDefaultProps() {
     return {
@@ -12,14 +12,15 @@ export default React.createClass({
   },
 
   _onChange() {
-    console.log('args', arguments);
-
-    this.setState({tasks: []});
+    var tasks = TodoStore.getAll();
+    console.log('on change')
+    this.setState({tasks: tasks});
   },
 
 
   componentDidMount() {
-    TodoStore.addDeleteListener(this._onChange);
+    console.log('add listener');
+    TodoStore.addChangeListener(this._onChange);
   },
 
   render() {

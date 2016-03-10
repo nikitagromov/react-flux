@@ -11,6 +11,10 @@ function addItem(title, completed = false) {
   _data = _data.concat({title, completed});
 }
 
+function removeAlldata() {
+  _data = [];
+}
+
 // Facebook style store creation.
 const TodoStore = assign({}, BaseStore, {
   // public methods used by Controller-View to operate on data
@@ -39,8 +43,8 @@ const TodoStore = assign({}, BaseStore, {
     // add more cases for other actionTypes...
 
     case Constants.ActionTypes.ALL_TASKS_DELETED:
-      console.log('action --->>')
-      TodoStore.emitDeleteAll();
+      removeAlldata();
+      TodoStore.emitChange();
       break;
 
     }
