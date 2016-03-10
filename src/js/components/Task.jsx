@@ -31,7 +31,7 @@ export default React.createClass({
       <ListGroupItem>
         <Input type="checkbox" ref="checkbox" checked={task.completed}
           onChange={this.handleToggle.bind(this, task)}/>
-        <RichInput task={task}/>
+        <RichInput entity={task}/>
       </ListGroupItem>
     );
   }

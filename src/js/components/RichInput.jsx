@@ -6,7 +6,7 @@ import Input from 'react-bootstrap/lib/Input';
 export default React.createClass({
   getDefaultProps() {
     return {
-      task: {
+      entity: {
         title: '',
         completed: false
       }
@@ -16,7 +16,7 @@ export default React.createClass({
   getInitialState(){
     return {
       showInput: false,
-      inputValue: this.props.task.title
+      inputValue: this.props.entity.title
     }
   },
 
@@ -27,7 +27,7 @@ export default React.createClass({
   handleKeyDown(e) {
     if (e.keyCode == 13) {
       e.preventDefault();
-      ActionCreator.changeTaskTitle({id: this.props.task.id, title: this.state.inputValue})
+      ActionCreator.changeTaskTitle({id: this.props.entity.id, title: this.state.inputValue})
       this.setState({showInput: false, inputValue: ''});
 
     }
@@ -38,7 +38,7 @@ export default React.createClass({
   },
 
   render() {
-    let {task} = this.props;
+    let {entity} = this.props;
     if (this.state.showInput) {
       return (
         <Input type="text"
@@ -50,7 +50,7 @@ export default React.createClass({
       );
     } else {
       return (
-        <span onClick={this.handleClick}>{task.title}</span>
+        <span onClick={this.handleClick}>{entity.title}</span>
       )
     }
   }
