@@ -27,9 +27,8 @@ export default React.createClass({
   handleKeyDown(e) {
     if (e.keyCode == 13) {
       e.preventDefault();
-      ActionCreator.changeTaskTitle({id: this.props.entity.id, title: this.state.inputValue})
+      ActionCreator.changeTaskTitle({id: this.props.entity.id, title: this.state.inputValue});
       this.setState({showInput: false, inputValue: ''});
-
     }
   },
 
