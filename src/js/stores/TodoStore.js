@@ -81,8 +81,8 @@ const TodoStore = assign({}, BaseStore, {
       break;
 
     case Constants.ActionTypes.TASK_TITLE_CHANGED:
-      changeTaskTitle(action.task)
-      TodoStore.emitChange()
+      changeTaskTitle(action.task);
+      TodoStore.emitChange();
       break;
 
     case Constants.ActionTypes.TASK_UNCOMPLETED:
