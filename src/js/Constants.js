@@ -9,6 +9,9 @@ export default {
     TASK_ADDED: null,
     TASK_DELETED: null,
     ALL_TASKS_DELETED: null,
+    TASK_COMPLETED: null,
+    TASK_UNCOMPLETED: null,
+    TASK_TITLE_CHANGED: null
   }),
 
   ActionSources: keyMirror({

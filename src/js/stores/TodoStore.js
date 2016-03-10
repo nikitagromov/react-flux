@@ -5,14 +5,43 @@ import assign from 'object-assign';
 
 // data storage
 let _data = [];
+let id = 0;
+
 
 // add private functions to modify data
 function addItem(title, completed = false) {
-  _data = _data.concat({title, completed});
+  _data = _data.concat({title, completed, id});
+  id++;
 }
 
 function removeAlldata() {
   _data = [];
+}
+
+function completeTask(task) {
+  _data.forEach((item) => {
+    if (task.id === item.id) {
+      console.log('task completed')
+      item.completed = true;
+    }
+  })
+}
+
+function changeTaskTitle(task) {
+  _data.forEach((item) => {
+    if (task.id === item.id) {
+      item.title = task.title;
+    }
+  })
+
+}
+
+function unCompleteTask(task) {
+  _data.forEach((item) => {
+    if (task.id === item.id) {
+      item.completed = false;
+    }
+  })
 }
 
 // Facebook style store creation.
@@ -47,6 +76,20 @@ const TodoStore = assign({}, BaseStore, {
       TodoStore.emitChange();
       break;
 
+    case Constants.ActionTypes.TASK_COMPLETED:
+      completeTask(action.task);
+      TodoStore.emitChange();
+      break;
+
+    case Constants.ActionTypes.TASK_TITLE_CHANGED:
+      changeTaskTitle(action.task)
+      TodoStore.emitChange()
+      break;
+
+    case Constants.ActionTypes.TASK_UNCOMPLETED:
+      unCompleteTask(action.task);
+      TodoStore.emitChange();
+      break;
     }
   })
 });
